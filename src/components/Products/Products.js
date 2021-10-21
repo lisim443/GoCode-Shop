@@ -10,6 +10,10 @@ function Products() {
       <Product />
       <Product />
       <Product />
+      <Product />
+      <Product />
+      <Product />
+      <Product />
     </section>
   );
 }
