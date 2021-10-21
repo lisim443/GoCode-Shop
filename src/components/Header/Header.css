@@ -1,3 +1,18 @@
+h1,
+nav {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  outline: 0;
+  font-size: 100%;
+  font: inherit;
+  vertical-align: baseline;
+}
+
+nav {
+  display: block;
+}
+
 h1 {
   font-size: 28px;
   font-weight: 300;
@@ -23,19 +38,12 @@ h1 {
   padding-right: 20px;
 }
 
-h1,
-nav {
-  margin: 0;
-  padding: 0;
-  border: 0;
-  outline: 0;
-  font-size: 100%;
-  font: inherit;
-  vertical-align: baseline;
-}
-
-nav {
-  display: block;
+label {
+  color: #666;
+  font-size: 10px;
+  font-weight: 500;
+  line-height: 2em;
+  text-transform: uppercase;
 }
 
 @media (max-width: 480px) {

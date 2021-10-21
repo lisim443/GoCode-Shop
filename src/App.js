@@ -6,12 +6,8 @@ import Products from "./components/Products/Products";
 function App() {
   return (
     <div className="App">
-      <div className="Header">
-        <Header />
-      </div>
-      <div className="Products">
-        <Products />
-      </div>
+      <Header />
+      <Products />
     </div>
   );
 }
