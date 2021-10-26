@@ -1,19 +1,12 @@
 import Product from "../Product/Product";
 import "./Products.css";
 
-function Products() {
+function Products({ productsList }) {
   return (
     <section className="products">
-      <Product />
-      <Product />
-      <Product />
-      <Product />
-      <Product />
-      <Product />
-      <Product />
-      <Product />
-      <Product />
-      <Product />
+      {productsList.map(({ id, title, price, image }) => (
+        <Product id={id} title={title} price={price} image={image} />
+      ))}
     </section>
   );
 }
