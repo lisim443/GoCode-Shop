@@ -25,3 +25,27 @@
 // }
 
 // export default Counter;
+
+// in App =
+// }
+/* <button
+  onClick={() =>
+    setTodos(
+      todos.map((todo) => {
+        return {
+          id: todo.id,
+          title: todo.title,
+          completed: true,
+        };
+        OR
+        return {
+          ...todo,
+          completed:true,
+        }
+      })
+    )
+  }
+>
+  complete
+</button> */
+// }

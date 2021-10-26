@@ -1,7 +1,8 @@
-import logo from "./logo.svg";
+// import logo from "./logo.svg";
 import "./App.css";
 import Header from "./components/Header/Header";
 import Products from "./components/Products/Products";
+import Advertiser from "./components/Advertiser/Advertiser";
 import React from "react";
 
 function App() {
@@ -278,32 +279,10 @@ function App() {
   return (
     <React.Fragment>
       <Header />
+      <Advertiser />
       <Products productsList={productsList} />
     </React.Fragment>
   );
 }
 
 export default App;
-
-{
-  /* <button
-  onClick={() =>
-    setTodos(
-      todos.map((todo) => {
-        return {
-          id: todo.id,
-          title: todo.title,
-          completed: true,
-        };
-        OR
-        return {
-          ...todo,
-          completed:true,
-        }
-      })
-    )
-  }
->
-  complete
-</button> */
-}
