@@ -274,11 +274,21 @@ function App() {
       },
     },
   ];
-  // const [todos, setTodos] = usedState(todos);
+
+  const categoriesFilter = () => {
+    productsList
+      .map((p) => p.category)
+      .filter((value, index, array) => {
+        return array.indexOf(value) === index;
+      });
+  };
 
   return (
     <React.Fragment>
-      <Header />
+      <Header
+        catergoriesFilter={categoriesFilter}
+        productsList={productsList}
+      />
       <Advertiser />
       <Products productsList={productsList} />
     </React.Fragment>
