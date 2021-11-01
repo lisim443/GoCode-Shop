@@ -1,6 +1,6 @@
 import "./Header.css";
 
-function Header({ categoriesFilter, productsList }) {
+function Header({ categories, categoryFilter }) {
   return (
     <nav className="product-filter">
       <h1>Jackets</h1>
@@ -8,9 +8,12 @@ function Header({ categoriesFilter, productsList }) {
       <div className="sort">
         <div className="collection-sort">
           <label>Filter by:</label>
-          <select onClick={categoriesFilter}>
-            {productsList.map(({ category }) => (
-              <option value="1">{category}</option>
+          <select onChange={categoryFilter}>
+            <option value="All">All</option>
+            {categories.map(({ category }) => (
+              <option key={category} value={category}>
+                {category}
+              </option>
             ))}
           </select>
         </div>
