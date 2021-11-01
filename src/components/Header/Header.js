@@ -10,7 +10,7 @@ function Header({ categories, categoryFilter }) {
           <label>Filter by:</label>
           <select onChange={categoryFilter}>
             <option value="All">All</option>
-            {categories.map(({ category }) => (
+            {categories.map((category) => (
               <option key={category} value={category}>
                 {category}
               </option>
