@@ -7,26 +7,30 @@ import React from "react";
 import { useState, useEffect } from "react";
 
 function App() {
-  const [productsList, setProductsList] = useState([]);
+  const [allProducts, setAllProducts] = useState([]);
+  const [products, setProducts] = useState([]);
 
   useEffect(() => {
     fetch("https://fakestoreapi.com/products")
-      .then((res) => res.json())
-      .then((productsList) => setProductsList(productsList));
+      .then((response) => response.json())
+      .then((data) => {
+        setAllProducts(data);
+        setProducts(data);
+      });
   }, []);
 
-  const categories = productsList
+  const categories = allProducts
     .map((p) => p.category)
     .filter((value, index, array) => array.indexOf(value) === index);
 
   const categoryFilter = (e) => {
     if (e.target.value === "All") {
-      setProductsList(productsList);
+      setProducts(allProducts);
     } else {
-      const filterProduct = productsList.filter(
+      const filterCategory = allProducts.filter(
         (p) => p.category === e.target.value
       );
-      setProductsList(filterProduct);
+      setProducts(filterCategory);
     }
   };
 
@@ -34,7 +38,7 @@ function App() {
     <React.Fragment>
       <Header categories={categories} categoryFilter={categoryFilter} />
       <Advertiser />
-      <Products productsList={productsList} />
+      <Products products={products} />
     </React.Fragment>
   );
 }
