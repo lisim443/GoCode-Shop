@@ -6,6 +6,8 @@ h5 {
 h6 {
   color: #666;
   font-size: 14px;
+  margin-top: 3px;
+  margin-bottom: 5px;
 }
 
 .product-card {
@@ -27,4 +29,9 @@ h6 {
   margin-top: auto;
   padding-top: 20px;
   text-align: center;
+}
+
+.amount {
+  margin-left: 2px;
+  margin-right: 2px;
 }

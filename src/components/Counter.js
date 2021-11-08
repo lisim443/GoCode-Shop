@@ -1,6 +1,6 @@
 // import { useState } from "react";
 
-// import(useState);
+// // import(useState);
 // function Counter() {
 //   const [count, setCount] = useState(10);
 //   return (
@@ -56,6 +56,11 @@
 
 // }
 
+// style={{backgriund:darkMode }}
+
+// const darkMode = useContext(ThemeContext);
+// const [darkMode, setDarkMode] = useState(false)
+// <button onClick={() => setDarkMode(true)}>change to dark mode</button>
 // <button
 //   onClick={() =>
 //     setTodos(

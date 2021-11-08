@@ -5,6 +5,8 @@ import Products from "./components/Products/Products";
 import Advertiser from "./components/Advertiser/Advertiser";
 import React from "react";
 import { useState, useEffect } from "react";
+import CartContext from "./CartContext";
+import TotalContext from "./TotalContext";
 
 function App() {
   const [allProducts, setAllProducts] = useState([]);
@@ -34,11 +36,18 @@ function App() {
     }
   };
 
+  const [cart, setCart] = useState([]);
+  const [total, setTotal] = useState(0);
+
   return (
     <React.Fragment>
-      <Header categories={categories} categoryFilter={categoryFilter} />
       <Advertiser />
-      <Products products={products} />
+      <CartContext.Provider value={[cart, setCart]}>
+        <TotalContext.Provider value={[total, setTotal]}>
+          <Header categories={categories} categoryFilter={categoryFilter} />
+          <Products products={products} />
+        </TotalContext.Provider>
+      </CartContext.Provider>
     </React.Fragment>
   );
 }

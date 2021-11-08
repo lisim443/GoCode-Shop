@@ -81,7 +81,6 @@ label {
   border: 0;
   outline: 0;
   font-size: 100%;
-  font: inherit;
   vertical-align: baseline;
 }
 section {
@@ -170,4 +169,9 @@ body {
   .sort {
     align-self: flex-start;
   }
+}
+
+* {
+  font-family: "Trebuchet MS", "Lucida Sans Unicode", "Lucida Grande",
+    "Lucida Sans", Arial, sans-serif;
 }

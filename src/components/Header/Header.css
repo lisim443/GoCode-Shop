@@ -6,6 +6,7 @@ h1 {
   font-size: 28px;
   font-weight: 300;
   flex: 1;
+  margin-left: 500px;
 }
 
 .product-filter {
@@ -33,4 +34,10 @@ label {
   font-weight: 500;
   line-height: 2em;
   text-transform: uppercase;
+}
+
+.cart-button {
+  height: 30px;
+  margin-left: 20px;
+  align-self: flex-end;
 }
