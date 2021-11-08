@@ -21,7 +21,8 @@ function Cart() {
   const items = Object.entries(cart).map(([key, value]) => {
     return (
       <div key={key} className="cart-item">
-        <span>{value.title}</span>: <span>{value.amount}</span>, price:
+        <img className="cart-pic" src={value.image}></img>
+        <span> {value.title}</span>: <span>{value.amount}</span>, price:
         <span>${value.price * value.amount}</span>
       </div>
     );

@@ -2,22 +2,43 @@ import "./Product.css";
 // import Counter from "./Counter";
 import React, { useState, useContext } from "react";
 import CartContext from "../../CartContext";
+import { useEffect } from "react/cjs/react.development";
+import TotalContext from "../../TotalContext";
 
 function Product({ image, title, price, id }) {
   const [cart, setCart] = useContext(CartContext);
-
   const [count, setCount] = useState(0);
+  const [total, setTotal] = useContext(TotalContext);
 
   const addProduct = () => {
     setCount(count + 1);
 
-    const currentProduct = cart[id] || { amount: count, title, price };
+    const currentProduct = cart[id] || { amount: count, title, price, image };
     currentProduct.amount = currentProduct.amount + 1;
 
     const newItems = { ...cart, [id]: currentProduct };
 
     setCart(newItems);
   };
+
+  useEffect(() => {
+    if (!cart) {
+      setCount(0);
+    }
+  }, [cart]);
+
+  const getTotal = (product) => {
+    return Object.entries(product).reduce((acc, item) => {
+      const amount = item[1].amount;
+      return acc + amount;
+    }, 0);
+  };
+
+  useEffect(() => {
+    if (addProduct) {
+      setTotal(getTotal(cart));
+    }
+  }, [cart]);
 
   const removeProduct = () => {
     count > 0 && setCount(count - 1);

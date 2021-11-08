@@ -2,10 +2,12 @@ import "./Header.css";
 import Cart from "../Cart/Cart";
 import { useState, useContext } from "react";
 import TotalContext from "../../TotalContext";
-import { useEffect } from "react/cjs/react.development";
+// import CartContext from "../../CartContext";
+// import { useEffect } from "react/cjs/react.development";
 
 function Header({ categories, categoryFilter }) {
   const [showCart, setShowCart] = useState(false);
+
   const [total] = useContext(TotalContext);
 
   return (
