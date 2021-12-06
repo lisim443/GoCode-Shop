@@ -2,13 +2,17 @@ import "./Header.css";
 import Cart from "../Cart/Cart";
 import { useState, useContext } from "react";
 import TotalContext from "../../TotalContext";
-// import CartContext from "../../CartContext";
-// import { useEffect } from "react/cjs/react.development";
+import React from "react";
+import Box from "@mui/material/Box";
+import Slider from "@mui/material/Slider";
+import PriceContext from "../../PriceContext";
 
-function Header({ categories, categoryFilter }) {
+function Header({ categories, handleCategoryChange, handlePriceChange }) {
   const [showCart, setShowCart] = useState(false);
-
   const [total] = useContext(TotalContext);
+  const [minMax, setMinMax, price, setPrice] = useContext(PriceContext);
+
+  const handleChange = (event, newValue) => handlePriceChange(newValue);
 
   return (
     <nav className="product-filter">
@@ -17,7 +21,7 @@ function Header({ categories, categoryFilter }) {
       <div className="sort">
         <div className="collection-sort">
           <label>Filter by:</label>
-          <select onChange={categoryFilter}>
+          <select onChange={handleCategoryChange}>
             <option value="All">All</option>
             {categories.map((category) => (
               <option key={category} value={category}>
@@ -40,6 +44,16 @@ function Header({ categories, categoryFilter }) {
             <option value="/">Date, old to new</option>
           </select>
         </div>
+        <Box sx={{ width: 200 }} className="box">
+          <Slider
+            min={minMax[0]}
+            max={minMax[1]}
+            getAriaLabel={() => "Price range"}
+            value={price}
+            onChange={handleChange}
+            valueLabelDisplay="auto"
+          />
+        </Box>
         <button
           className="cart-button"
           onClick={() => {

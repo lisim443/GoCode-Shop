@@ -1,12 +1,41 @@
 import Product from "../Product/Product";
 import "./Products.css";
+function Products({ products, category, price }) {
+  const filteredProducts = products.filter(
+    (product) =>
+      product.price >= price[0] &&
+      product.price <= price[1] &&
+      (category === "all" || product.category === category)
+  );
 
-function Products({ products }) {
   return (
     <section className="products">
-      {products.map(({ id, title, price, image }) => (
-        <Product key={id} id={id} title={title} price={price} image={image} />
-      ))}
+      {filteredProducts.map(
+        ({
+          _id: id,
+          title,
+          price,
+          description,
+          category,
+          image,
+          rating,
+          rate,
+          count,
+        }) => (
+          <Product
+            key={id}
+            id={id}
+            title={title}
+            price={price}
+            description={description}
+            category={category}
+            image={image}
+            rating={rating}
+            rate={rate}
+            count={count}
+          />
+        )
+      )}
     </section>
   );
 }

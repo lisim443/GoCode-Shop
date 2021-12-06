@@ -6,7 +6,6 @@ h1 {
   font-size: 28px;
   font-weight: 300;
   flex: 1;
-  margin-left: 500px;
 }
 
 .product-filter {
@@ -89,4 +88,10 @@ label {
 .cart-button:active {
   box-shadow: #d6d6e7 0 3px 7px inset;
   transform: translateY(2px);
+}
+
+.box {
+  margin-left: 20px;
+  margin-right: 20px;
+  margin-top: 15px;
 }

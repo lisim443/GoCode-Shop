@@ -2,8 +2,9 @@ import "./Product.css";
 // import Counter from "./Counter";
 import React, { useState, useContext } from "react";
 import CartContext from "../../CartContext";
-import { useEffect } from "react/cjs/react.development";
+import { useEffect } from "react";
 import TotalContext from "../../TotalContext";
+import { Link } from "react-router-dom";
 
 function Product({ image, title, price, id }) {
   const [cart, setCart] = useContext(CartContext);
@@ -20,25 +21,6 @@ function Product({ image, title, price, id }) {
 
     setCart(newItems);
   };
-
-  useEffect(() => {
-    if (!cart) {
-      setCount(0);
-    }
-  }, [cart]);
-
-  const getTotal = (product) => {
-    return Object.entries(product).reduce((acc, item) => {
-      const amount = item[1].amount;
-      return acc + amount;
-    }, 0);
-  };
-
-  useEffect(() => {
-    if (addProduct) {
-      setTotal(getTotal(cart));
-    }
-  }, [cart]);
 
   const removeProduct = () => {
     count > 0 && setCount(count - 1);
@@ -61,13 +43,34 @@ function Product({ image, title, price, id }) {
     setCart(newCart);
   };
 
+  const getTotal = (product) => {
+    return Object.entries(product).reduce((acc, item) => {
+      const amount = item[1].amount;
+      return acc + amount;
+    }, 0);
+  };
+
+  useEffect(() => {
+    if (!cart) {
+      setCount(0);
+    }
+  }, [cart]);
+
+  useEffect(() => {
+    if (addProduct) {
+      setTotal(getTotal(cart));
+    }
+  }, [cart]);
+
   return (
     <div className="product-card">
       <div className="product-image">
         <img src={image} alt="img" />
       </div>
       <div className="product-info">
-        <h5>{title}</h5>
+        <Link to={`/productdetails/${id}`}>
+          <h5>{title}</h5>
+        </Link>
         <h6>${price}</h6>
         <span className="product-amount">
           <button onClick={removeProduct}>-</button>
