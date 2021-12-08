@@ -8,9 +8,10 @@ import dotenv from "dotenv";
 const app = express();
 
 app.use(express.json());
+app.use(express.static("client/build"));
 dotenv.config();
 
-app.get("/products", async (req, res) => {
+app.get("/api/products", async (req, res) => {
   const { term } = req.query;
   try {
     const products = await Products.find();
@@ -25,7 +26,7 @@ app.get("/products", async (req, res) => {
   }
 });
 
-app.get("/products/:id", async (req, res) => {
+app.get("/api/products/:id", async (req, res) => {
   const { id } = req.params;
   try {
     const product = await Products.findById(id);
@@ -35,20 +36,20 @@ app.get("/products/:id", async (req, res) => {
   }
 });
 
-app.post("/products", async (req, res) => {
+app.post("/api/products", async (req, res) => {
   const { title, description, price, category, image } = req.body;
   const product = new Products({ title, description, price, category, image });
   await product.save();
   res.send(product);
 });
 
-app.delete("/products/:id", async (req, res) => {
+app.delete("/api/products/:id", async (req, res) => {
   const { id } = req.params;
   const product = await Products.findByIdAndDelete(id);
   res.send(product);
 });
 
-app.put("/products/:id", async (req, res) => {
+app.put("/api/products/:id", async (req, res) => {
   const { id } = req.params;
   const body = req.body;
   const product = await Products.findByIdAndUpdate(id, body);
@@ -67,6 +68,10 @@ async function initProducts() {
     await Products.insertMany(mappedProducts);
   }
 }
+
+app.get("*", (req, res) => {
+  res.sendFile(__dirname + "/client/build/index.html");
+});
 
 const { DB_USER, DB_PASS, DB_HOST, DB_NAME } = process.env;
 

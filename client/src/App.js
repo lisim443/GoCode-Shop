@@ -8,12 +8,16 @@ import ProductDetails from "./pages/ProductDetails";
 function App() {
   return (
     <div>
-      <Link to="/">Home</Link>
-      <Link to="/about">About</Link>
+      <Link to="/" className="navigation-link">
+        Home
+      </Link>
+      <Link to="/about" className="navigation-link">
+        About
+      </Link>
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/about" element={<About />} />
-        <Route path="/productdetails/:id" element={<ProductDetails />} />
+        <Route path="/products/:id" element={<ProductDetails />} />
       </Routes>
     </div>
   );

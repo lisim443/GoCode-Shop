@@ -175,3 +175,7 @@ body {
   font-family: "Trebuchet MS", "Lucida Sans Unicode", "Lucida Grande",
     "Lucida Sans", Arial, sans-serif;
 }
+
+.navigation-link {
+  padding: 5px 5px 5px 5px;
+}

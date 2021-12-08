@@ -13,7 +13,7 @@ function ProductDetails() {
   const [product, setProduct] = useState(null);
 
   useEffect(() => {
-    fetch(`/products/${id}`)
+    fetch(`/api/products/${id}`)
       .then((res) => res.json())
       .then((product) => setProduct(product));
   }, [id]);
@@ -27,7 +27,7 @@ function ProductDetails() {
               component="img"
               height="300"
               image={product.image}
-              alt="green iguana"
+              alt="product img"
             />
             <CardContent>
               <Typography gutterBottom variant="h5" component="div">

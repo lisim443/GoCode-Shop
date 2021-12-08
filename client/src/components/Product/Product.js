@@ -68,7 +68,7 @@ function Product({ image, title, price, id }) {
         <img src={image} alt="img" />
       </div>
       <div className="product-info">
-        <Link to={`/productdetails/${id}`}>
+        <Link to={`/products/${id}`}>
           <h5>{title}</h5>
         </Link>
         <h6>${price}</h6>
